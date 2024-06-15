@@ -4,9 +4,9 @@ from main import app
 client = TestClient(app)
 
 def test_calculate():
-    response = client.post("/calculate/", json={"expression": "3 4 + 2 * 7 /"})
+    response = client.post("/calculate/", json={"expression": "3 4 + 2 * 1 /"})
     assert response.status_code == 200
-    assert response.json()["result"] == 2.0
+    assert response.json()["result"] == 14.0
     assert "timestamp" in response.json()
 
 def test_export():

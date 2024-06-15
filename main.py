@@ -28,7 +28,7 @@ def get_db():
 async def root():
     return {'message': 'Test'}
 
-@app.get('/cal', response_model=schemas.Result)
+@app.post('/cal', response_model=schemas.Result)
 async def cal(operation: Operation, db: Session = Depends(get_db)):
     try:
         result = npi(operation.expression)
@@ -50,7 +50,7 @@ async def cal(operation: Operation, db: Session = Depends(get_db)):
 def export_operations(db: Session = Depends(get_db)):
     operations = db.query(models.Operation).all()
 
-    # save in memory instead of server
+    # save in memory instead of server disk
     output = StringIO()
     writer = csv.writer(output)
     writer.writerow(['id', 'timestamp', 'expression', 'result'])

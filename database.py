@@ -4,7 +4,8 @@ from sqlalchemy.orm import sessionmaker
 import os
 
 # SQLALCHEMY_DATABASE_URL = 'sqlite:///./sql_app.db'
-SQLALCHEMY_DATABASE_URL = os.getenv("DATABASE_URL", "postgresql://fastapi_user:fastapi_password@db/fastapi_db")
+# if db url is not defined, use sqlite
+SQLALCHEMY_DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./sql_app.db")
 
 
 engine = create_engine(SQLALCHEMY_DATABASE_URL)

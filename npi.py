@@ -8,14 +8,15 @@ def npi(expression):
         if item in ops:
             b = stack.pop()
             a = stack.pop()
-            if item == '+':
-                stack.append(a + b)
-            elif item == '-':
-                stack.append(a - b)
-            elif item == '*':
-                stack.append(a * b)
-            elif item == '/':
-                stack.append(a / b)
+            match item:
+                case '+':
+                    stack.append(a + b)
+                case '-':
+                    stack.append(a - b)
+                case '*':
+                    stack.append(a * b)
+                case '/':
+                    stack.append(a / b)
         else:
             stack.append(float(item))
 
