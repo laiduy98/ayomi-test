@@ -13,13 +13,13 @@ DB_NAME=fastapi_db
 
 ### With docker
 
-```
+```sh
 docker-compose up --build
 ```
 
 You can stop the service by this command.
 
-```
+```sh
 docker-compose down
 ```
 
@@ -50,7 +50,7 @@ Contains the NPI calculator. It could be run directly to test the function.
 
 - ```schemas.py```:
 
-
+To validate results we receive as well as to reformat the data that we want to send to the browser.
 
 - ```docker-compose.yml```:
 
@@ -64,8 +64,8 @@ The csv is created as a downloadable file instead of store on the server's disk 
 
 ## Unit test
 
-FastAPI also come with a built-in TestClient
+FastAPI also come with a built-in TestClient. HTTPX is required to use it. To run the test file:
 
-```
+```sh
 python test.py
 ```

@@ -17,6 +17,13 @@ models.Base.metadata.create_all(bind=engine)
 class Operation(BaseModel):
     expression: str
 
+    class Config:
+        schema_extra = {
+            "example": {
+                "expression": "3 4 + 2 * 1 +"
+            }
+        }
+
 def get_db():
     db = SessionLocal()
     try:
@@ -27,6 +34,7 @@ def get_db():
 @app.get('/')
 async def root():
     return {'message': 'Test'}
+
 
 @app.post('/cal', response_model=schemas.Result)
 async def cal(operation: Operation, db: Session = Depends(get_db)):
@@ -43,7 +51,7 @@ async def cal(operation: Operation, db: Session = Depends(get_db)):
         # return result
         return db_operation
     except Exception as e:
-        raise HTTPException(status_code=400, detail='Invalid Expression')
+        raise HTTPException(status_code=400, detail='Invalid NPI Expression')
 
 
 @app.get('/export/')
