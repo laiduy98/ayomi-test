@@ -44,9 +44,9 @@ Defines a database service as in the documentation of FastAPI.
 
 Contains 2 routes.
 
-    - ```/cal``` calculate the result of a NPI expression, then store them in the database.
+1. ``/cal`` calculate the result of a NPI expression, then store them in the database.
 
-    - ```/export``` query the database and return the user a csv file.
+2. ```export``` query the database and return the user a csv file.
 
 
 - ```npi.py```:
